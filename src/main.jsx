@@ -8,6 +8,7 @@ import "./index.css";
 
 import App from "./App"
 import Users from "./component/Users";
+import UserDetail from "./component/UserDetail";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
   {
     path: "/users",
     element: <Users></Users>
+  },
+  {
+    path: "/details/:id",
+    element:<UserDetail></UserDetail>,
+    loader : ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
   }
 ]);
 
